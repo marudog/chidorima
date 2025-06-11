@@ -1,0 +1,104 @@
+[gd_scene load_steps=5 format=3 uid="uid://brr030stmxwfm"]
+
+[ext_resource type="FontFile" uid="uid://cyt4b1utv2mbn" path="res://Jalnan2.otf" id="1_55jci"]
+[ext_resource type="Texture2D" uid="uid://cmw02chvgri6q" path="res://Image/095.png" id="1_ejids"]
+[ext_resource type="Script" uid="uid://btgu5x5cokd6l" path="res://result.gd" id="1_mk788"]
+[ext_resource type="Texture2D" uid="uid://jp5hmia6rbjr" path="res://Image/buttonLong_beige.png" id="2_mk788"]
+
+[node name="Result" type="Node"]
+script = ExtResource("1_mk788")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartButton" type="Button" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -629.0
+offset_top = -179.0
+offset_right = -431.0
+offset_bottom = -122.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(3, 3)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("1_55jci")
+theme_override_font_sizes/font_size = 20
+text = "TITLE"
+icon = ExtResource("2_mk788")
+icon_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+offset_left = 978.0
+offset_top = 418.0
+offset_right = 1078.0
+offset_bottom = 518.0
+scale = Vector2(3, 3)
+texture = ExtResource("1_ejids")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -121.0
+offset_top = -296.0
+offset_right = 125.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("1_55jci")
+theme_override_font_sizes/font_size = 60
+text = "결 과"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KO" type="Label" parent="CanvasLayer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("1_55jci")
+theme_override_font_sizes/font_size = 60
+text = "K.O : 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Miss" type="Label" parent="CanvasLayer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("1_55jci")
+theme_override_font_sizes/font_size = 60
+text = "MISS : 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Score" type="Label" parent="CanvasLayer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("1_55jci")
+theme_override_font_sizes/font_size = 60
+text = "점수 : 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="CanvasLayer/StartButton" to="." method="_on_start_button_pressed"]
