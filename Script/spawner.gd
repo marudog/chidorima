@@ -17,6 +17,7 @@ func _on_spawn_timer_timeout():
 		# 랜덤으로 하나 선택
 		var spawn_point = spawn_points[randi() % spawn_points.size()]
 		var enemy = enemy_scene.instantiate()
+		enemy.player = %Player
 		get_parent().add_child(enemy) # 씬 트리에 직접 추가
 		enemy.global_position = spawn_point.global_position
 		spawn_interval = randf()

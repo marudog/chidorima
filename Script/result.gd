@@ -13,4 +13,4 @@ func _ready() -> void:
 	Score.text = "Score : " + str((kill_count * 500) - (miss * 100))
 
 func _on_start_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://Title.tscn")
+	get_tree().change_scene_to_file("res://title.tscn")

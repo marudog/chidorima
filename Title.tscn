@@ -1,22 +1,22 @@
 [gd_scene load_steps=7 format=3 uid="uid://d3wr6wlb4v1ig"]
 
-[ext_resource type="FontFile" uid="uid://cyt4b1utv2mbn" path="res://Jalnan2.otf" id="1_c0dwi"]
-[ext_resource type="Texture2D" uid="uid://du7ybpyu3q5cv" path="res://Image/title.png" id="1_quvj1"]
-[ext_resource type="Texture2D" uid="uid://dryhc4jxk8fbb" path="res://Image/1.zip-1-NaNoRenO 2022-bell_tower.png" id="1_rg4ux"]
-[ext_resource type="Script" uid="uid://cpmotlpav80fa" path="res://Script/title.gd" id="1_yytgh"]
-[ext_resource type="Texture2D" uid="uid://jp5hmia6rbjr" path="res://Image/buttonLong_beige.png" id="2_ax32a"]
-[ext_resource type="AudioStream" uid="uid://vm0wb20fxgwm" path="res://Sound/Are-you-kidding_loop.ogg" id="4_e4n62"]
+[ext_resource type="Script" uid="uid://cpmotlpav80fa" path="res://Script/title.gd" id="1_7lgly"]
+[ext_resource type="Texture2D" uid="uid://dryhc4jxk8fbb" path="res://Image/1.zip-1-NaNoRenO 2022-bell_tower.png" id="2_0824t"]
+[ext_resource type="Texture2D" uid="uid://du7ybpyu3q5cv" path="res://Image/title.png" id="3_nuqgq"]
+[ext_resource type="FontFile" uid="uid://cyt4b1utv2mbn" path="res://Jalnan2.otf" id="4_lx2ly"]
+[ext_resource type="Texture2D" uid="uid://jp5hmia6rbjr" path="res://Image/buttonLong_beige.png" id="5_jil77"]
+[ext_resource type="AudioStream" uid="uid://vm0wb20fxgwm" path="res://Sound/Are-you-kidding_loop.ogg" id="6_16uvt"]
 
 [node name="Title" type="Node"]
-script = ExtResource("1_yytgh")
+script = ExtResource("1_7lgly")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(760, 311)
-texture = ExtResource("1_rg4ux")
+texture = ExtResource("2_0824t")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(292, 479)
-texture = ExtResource("1_quvj1")
+texture = ExtResource("3_nuqgq")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -33,7 +33,7 @@ offset_bottom = -70.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 40
-theme_override_fonts/font = ExtResource("1_c0dwi")
+theme_override_fonts/font = ExtResource("4_lx2ly")
 theme_override_font_sizes/font_size = 200
 text = "치 돌 권 법"
 horizontal_alignment = 1
@@ -53,10 +53,10 @@ grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(3, 3)
 theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("1_c0dwi")
+theme_override_fonts/font = ExtResource("4_lx2ly")
 theme_override_font_sizes/font_size = 20
 text = "START"
-icon = ExtResource("2_ax32a")
+icon = ExtResource("5_jil77")
 icon_alignment = 1
 
 [node name="Label2" type="Label" parent="CanvasLayer"]
@@ -65,7 +65,7 @@ offset_top = 357.0
 offset_right = 1227.0
 offset_bottom = 456.0
 theme_override_constants/outline_size = 15
-theme_override_fonts/font = ExtResource("1_c0dwi")
+theme_override_fonts/font = ExtResource("4_lx2ly")
 theme_override_font_sizes/font_size = 40
 text = "←, A, 좌측 터치 : 좌측 공격
 →, D, 우측 터치 : 우측 공격"
@@ -73,7 +73,7 @@ horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_e4n62")
+stream = ExtResource("6_16uvt")
 autoplay = true
 
 [connection signal="pressed" from="CanvasLayer/StartButton" to="." method="_on_start_button_pressed"]

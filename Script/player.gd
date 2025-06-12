@@ -7,10 +7,10 @@ const IMAGE_HEIGHT = 960
 const START_ROW = 1 # 0부터 시작, 2번째 줄
 
 @onready var sprite = $Sprite2D
-@onready var left_hit = get_tree().get_root().find_child("LeftHit", true, false)
-@onready var right_hit = get_tree().get_root().find_child("RightHit", true, false)
-@onready var miss_sound = get_node("MissSound")
-@onready var heart_container = get_tree().get_root().find_child("HeartContainer", true, false)
+@onready var left_hit = %LeftHit
+@onready var right_hit = %RightHit
+@onready var miss_sound = %MissSound
+@onready var heart_container = %HeartContainer
 @export var heart_texture: Texture2D
 @export var left_hit_active: Texture2D
 @export var left_hit_inactive: Texture2D
@@ -31,6 +31,8 @@ var miss := 0
 var hp := 3
 
 func _ready() -> void:
+	get_viewport().set_input_as_handled()
+	
 	var atlas_texture = sprite.texture
 
 	if atlas_texture is AtlasTexture:
@@ -112,7 +114,7 @@ func update_sprite_region(row):
 func attack_check():
 	var player_pos = global_position
 	var attack_dir = sprite.flip_h if sprite.flip_h else false
-	var background = get_tree().get_root().find_child("Background", true, false)
+	var background = %Background
 	var hit_success := false
 
 	for enemy in get_tree().get_nodes_in_group("Enemy"):
@@ -179,7 +181,7 @@ func on_hit_by_enemy():
 		goto_result()
 
 func goto_result():
-	var result_scene = preload("res://Result.tscn")
+	var result_scene = preload("res://result.tscn")
 	var result = result_scene.instantiate()
 	result.kill_count = kill_count
 	result.miss = miss

@@ -66,6 +66,7 @@ scale = Vector2(1.13996, 1.436)
 shape = SubResource("RectangleShape2D_lquwl")
 
 [node name="MissSound" type="AudioStreamPlayer2D" parent="Player"]
+unique_name_in_owner = true
 stream = ExtResource("10_dg77c")
 
 [node name="Spawner" type="Node" parent="."]
@@ -99,6 +100,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="HeartContainer" type="HBoxContainer" parent="CanvasLayer/Control"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -112,7 +114,7 @@ offset_bottom = 233.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control"]
+[node name="ButtonContainer" type="HBoxContainer" parent="CanvasLayer/Control"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -127,13 +129,13 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 150
 
-[node name="LeftHit" type="Button" parent="CanvasLayer/Control/HBoxContainer"]
+[node name="LeftHit" type="Button" parent="CanvasLayer/Control/ButtonContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 icon = ExtResource("7_272bh")
 
-[node name="RightHit" type="Button" parent="CanvasLayer/Control/HBoxContainer"]
+[node name="RightHit" type="Button" parent="CanvasLayer/Control/ButtonContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
