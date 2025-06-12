@@ -6,11 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://jp5hmia6rbjr" path="res://Image/buttonLong_beige.png" id="2_mk788"]
 [ext_resource type="AudioStream" uid="uid://dewsp4h5f4s3r" path="res://BGM/guutara_loop.ogg" id="5_myq7g"]
 
-[node name="Result" type="Node" node_paths=PackedStringArray("KO", "Miss", "Score")]
+[node name="Result" type="Node" node_paths=PackedStringArray("KO", "Miss", "Score", "StartButton")]
 script = ExtResource("1_mk788")
 KO = NodePath("CanvasLayer/VBoxContainer/KO")
 Miss = NodePath("CanvasLayer/VBoxContainer/Miss")
 Score = NodePath("CanvasLayer/VBoxContainer/Score")
+StartButton = NodePath("CanvasLayer/StartButton")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
