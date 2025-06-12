@@ -14,8 +14,6 @@ var has_entered_screen := false
 var last_hit_sound_idx := -1
 
 func _ready():
-	$HitParticles.emitting = true
-	$HitParticles.emitting = false
 	#player = get_tree().get_root().find_child("Player", true, false)
 	speed = randf_range(200, 400)
 

@@ -4,7 +4,7 @@
 // Incrementing CACHE_VERSION will kick off the install event and force
 // previously cached resources to be updated from the network.
 /** @type {string} */
-const CACHE_VERSION = '1749724026|2782993704';
+const CACHE_VERSION = '1749724734|3491037034';
 /** @type {string} */
 const CACHE_PREFIX = 'ChidoriMA-sw-cache-';
 const CACHE_NAME = CACHE_PREFIX + CACHE_VERSION;

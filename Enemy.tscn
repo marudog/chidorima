@@ -1,8 +1,9 @@
-[gd_scene load_steps=21 format=3 uid="uid://cxuycfk068akp"]
+[gd_scene load_steps=17 format=3 uid="uid://cxuycfk068akp"]
 
 [ext_resource type="Script" uid="uid://dcn6xblq02r56" path="res://Script/enemy.gd" id="1_s7bn3"]
 [ext_resource type="Texture2D" uid="uid://sk4wrb3bsx2h" path="res://Image/Enemy/dang_1.png" id="1_tt7e2"]
 [ext_resource type="AudioStream" uid="uid://dia7xk0nsfjnm" path="res://hit1.mp3" id="3_2hac7"]
+[ext_resource type="PackedScene" uid="uid://cwk4psi1hrnhy" path="res://hit_particles.tscn" id="3_73x2u"]
 [ext_resource type="AudioStream" uid="uid://bljo1ubrhgy7y" path="res://hit2.mp3" id="4_jdgko"]
 [ext_resource type="AudioStream" uid="uid://rvvspl3fgisu" path="res://hit4.mp3" id="5_j4qr3"]
 [ext_resource type="AudioStream" uid="uid://660isrtesig7" path="res://hit3.mp3" id="6_73x2u"]
@@ -77,42 +78,6 @@ _data = {
 &"RESET": SubResource("Animation_tt7e2")
 }
 
-[sub_resource type="Gradient" id="Gradient_s7bn3"]
-colors = PackedColorArray(1, 1, 1, 0.156863, 0.8, 0.623529, 0.862745, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_2hac7"]
-gradient = SubResource("Gradient_s7bn3")
-
-[sub_resource type="Curve" id="Curve_e6d4v"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_qp131"]
-curve = SubResource("Curve_e6d4v")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6do27"]
-particle_flag_disable_z = true
-angular_velocity_min = -1.60933e-05
-angular_velocity_max = -1.60933e-05
-orbit_velocity_min = 9.49949e-08
-orbit_velocity_max = 9.49949e-08
-radial_velocity_min = -2.23517e-05
-radial_velocity_max = 9.99998
-gravity = Vector3(0, 0, 0)
-linear_accel_min = 45.0
-linear_accel_max = 90.0
-radial_accel_min = -2.23517e-06
-radial_accel_max = 90.0
-tangential_accel_min = -2.23517e-06
-tangential_accel_max = 180.0
-scale_min = 5.0
-scale_max = 20.0
-scale_curve = SubResource("CurveTexture_qp131")
-color = Color(0.816425, 0.655419, 0.848837, 1)
-color_ramp = SubResource("GradientTexture1D_2hac7")
-hue_variation_min = -2.23517e-08
-hue_variation_max = -2.23517e-08
-
 [node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
 script = ExtResource("1_s7bn3")
 
@@ -137,17 +102,8 @@ collision_layer = 2
 position = Vector2(0, 12)
 shape = SubResource("RectangleShape2D_s7bn3")
 
-[node name="HitParticles" type="GPUParticles2D" parent="."]
+[node name="HitParticles" parent="." instance=ExtResource("3_73x2u")]
 unique_name_in_owner = true
-emitting = false
-amount = 30
-one_shot = true
-preprocess = 0.5
-speed_scale = 2.0
-explosiveness = 1.0
-randomness = 1.0
-local_coords = true
-process_material = SubResource("ParticleProcessMaterial_6do27")
 
 [node name="HitSound0" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_2hac7")
