@@ -104,6 +104,7 @@ shape = SubResource("RectangleShape2D_s7bn3")
 
 [node name="HitParticles" parent="." instance=ExtResource("3_73x2u")]
 unique_name_in_owner = true
+amount = 10
 
 [node name="HitSound0" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_2hac7")
