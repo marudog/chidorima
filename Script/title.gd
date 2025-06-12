@@ -3,14 +3,6 @@ extends Node
 var music_resources = []
 
 func _ready():
-	var particle_scene = preload("res://hit_particles.tscn") # 실제 경로로 수정
-	var particle = particle_scene.instantiate()
-	add_child(particle)
-	particle.emitting = true
-	await get_tree().create_timer(0.1).timeout
-	particle.emitting = false
-	particle.queue_free()
-
 	preload_all_music("res://BGM")
 	preload_all_music("res://SFX") 
 

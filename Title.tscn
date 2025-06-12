@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://d3wr6wlb4v1ig"]
 
 [ext_resource type="Script" uid="uid://cpmotlpav80fa" path="res://Script/title.gd" id="1_7lgly"]
-[ext_resource type="Texture2D" uid="uid://dryhc4jxk8fbb" path="res://Image/1.zip-1-NaNoRenO 2022-bell_tower.png" id="2_0824t"]
+[ext_resource type="Texture2D" uid="uid://dryhc4jxk8fbb" path="res://Image/TitleBackground.png" id="2_0824t"]
 [ext_resource type="Texture2D" uid="uid://du7ybpyu3q5cv" path="res://Image/title.png" id="3_nuqgq"]
 [ext_resource type="FontFile" uid="uid://cyt4b1utv2mbn" path="res://Jalnan2.otf" id="4_lx2ly"]
 [ext_resource type="Texture2D" uid="uid://jp5hmia6rbjr" path="res://Image/buttonLong_beige.png" id="5_jil77"]

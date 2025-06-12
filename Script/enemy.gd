@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var sprite = $Sprite2D
+@onready var hit_effect = %HitAnimation
 @onready var run_sound = $RunSound # RunSound는 AudioStreamPlayer 노드
 
 var player
@@ -20,6 +21,10 @@ func _ready():
 	var main = get_tree().get_root().get_node("Main")
 	speed *= main.get_enemy_speed_multiplier()
 
+	hit_effect.visible = false
+	hit_effect.connect("animation_finished", func():
+		hit_effect.visible = false)
+
 func _process(delta):
 	if is_dead:
 		# 죽은 후에는 회전하며 날아감
@@ -29,11 +34,9 @@ func _process(delta):
 		if modulate.a <= 0:
 			queue_free()
 
-		$HitParticles.global_position = global_position
 		return
 
 	if is_knockback:
-		$HitParticles.global_position = global_position
 		return
 
 	if player:
@@ -47,8 +50,6 @@ func _process(delta):
 		else:
 			global_position -= direction * speed * 5 * delta
 
-		$HitParticles.global_position = global_position
-
 	_check_out_of_screen()
 
 func _check_out_of_screen():
@@ -57,6 +58,11 @@ func _check_out_of_screen():
 		has_entered_screen = true
 	elif has_entered_screen and not viewport_rect.has_point(global_position):
 		queue_free()
+
+func show_hit_effect():
+	hit_effect.visible = true
+	hit_effect.rotation = randf_range(0, TAU)
+	hit_effect.play("hit")
 
 # 대각선 반대 방향으로 날아가기 위한 변수
 var dead_fly_dir := Vector2.ZERO
@@ -77,11 +83,12 @@ func knockback(dir: Vector2):
 		speed += 20
 		tween.tween_property(self, "global_position", original_pos + dir * knockback_distance, 0.15)
 		tween.finished.connect(_on_knockback_finished)
+
+		show_hit_effect()
 	else:
 		die(dir)
 
-	$HitParticles.restart()
-	$HitParticles.emitting = true
+		show_hit_effect()
 
 	play_hit_sound()
 	
@@ -102,9 +109,6 @@ func die(dir: Vector2):
 	var speed = randf_range(900, 1200)
 	dead_fly_dir = fly_dir.normalized() * (speed / 600.0)
 	set_physics_process(false)
-
-	$HitParticles.restart()
-	$HitParticles.emitting = true
 
 	# 죽은 적 카운트 증가
 	if player:
@@ -154,3 +158,7 @@ func show_kill_combo(kill_count: int):
 	var ui_pos = ui_layer.global_position
 	combo_label.position = (player_pos + Vector2(-50, -240)) - ui_pos
 	combo_label.text = "%d K.O" % kill_count
+
+
+func _on_animation_player_animation_finished(anim_name:StringName) -> void:
+	pass # Replace with function body.
