@@ -13,8 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://b8uk221pmdgkq" path="res://Image/Bakcground/Winter.png" id="5_ycdy4"]
 [ext_resource type="Texture2D" uid="uid://7hqtvt3qnrgg" path="res://Image/Button/blue_button04.png" id="7_272bh"]
 [ext_resource type="Texture2D" uid="uid://bm2hhgbfegjx1" path="res://Image/Heart.png" id="8_vivmo"]
-[ext_resource type="AudioStream" uid="uid://gnly5nwjiexp" path="res://Sound/クイズ不正解1.mp3" id="10_dg77c"]
-[ext_resource type="AudioStream" uid="uid://38x7qk87sa6g" path="res://Sound/Battle-TheOath_loop.ogg" id="13_ycdy4"]
+[ext_resource type="AudioStream" uid="uid://gnly5nwjiexp" path="res://BGM/quiz_no.mp3" id="10_dg77c"]
+[ext_resource type="AudioStream" uid="uid://38x7qk87sa6g" path="res://BGM/Battle-TheOath_loop.ogg" id="13_ycdy4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h2yge"]
 atlas = ExtResource("2_0xm2m")

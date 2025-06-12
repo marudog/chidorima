@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cmw02chvgri6q" path="res://Image/095.png" id="1_ejids"]
 [ext_resource type="Script" uid="uid://btgu5x5cokd6l" path="res://Script/result.gd" id="1_mk788"]
 [ext_resource type="Texture2D" uid="uid://jp5hmia6rbjr" path="res://Image/buttonLong_beige.png" id="2_mk788"]
-[ext_resource type="AudioStream" uid="uid://dewsp4h5f4s3r" path="res://Sound/guutara_loop.ogg" id="5_myq7g"]
+[ext_resource type="AudioStream" uid="uid://dewsp4h5f4s3r" path="res://BGM/guutara_loop.ogg" id="5_myq7g"]
 
 [node name="Result" type="Node" node_paths=PackedStringArray("KO", "Miss", "Score")]
 script = ExtResource("1_mk788")
