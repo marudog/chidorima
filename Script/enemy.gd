@@ -144,7 +144,7 @@ func play_hit_sound():
 func show_kill_combo(kill_count: int):
 	if kill_count < 2:
 		return
-	var combo_scene = preload("res://ComboLabel.tscn")
+	var combo_scene = preload("res://Combolabel.tscn")
 	var combo_label = combo_scene.instantiate()
 	var ui_layer = get_tree().get_root().find_child("ComboControl", true, false)
 	ui_layer.add_child(combo_label)
