@@ -24,7 +24,7 @@ var attack_offset := 80 # 이동할 거리(픽셀)
 var is_attacking := false
 var prev_frame := -1
 var prev_row := -1
-
+var attack_range := 200
 var kill_count := 0
 var miss := 0
 
@@ -106,7 +106,6 @@ func update_sprite_region(row):
 		sprite.texture = atlas_texture
 
 func attack_check():
-	var attack_range := 200
 	var player_pos = global_position
 	var attack_dir = sprite.flip_h if sprite.flip_h else false
 	var background = get_tree().get_root().find_child("Background", true, false)
@@ -169,6 +168,7 @@ func add_kill():
 
 func on_hit_by_enemy():
 	hp -= 1
+	attack_range += 20
 	update_hearts()
 
 	if hp <= 0:

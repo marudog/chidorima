@@ -72,7 +72,7 @@ func knockback(dir: Vector2):
 		sprite.flip_h = true
 
 		var tween = create_tween()
-		var knockback_distance = 200
+		var knockback_distance = 250
 		var original_pos = global_position
 		speed += 20
 		tween.tween_property(self, "global_position", original_pos + dir * knockback_distance, 0.15)
