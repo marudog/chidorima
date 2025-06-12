@@ -3,7 +3,7 @@
 [ext_resource type="FontFile" uid="uid://cyt4b1utv2mbn" path="res://Jalnan2.otf" id="1_c0dwi"]
 [ext_resource type="Texture2D" uid="uid://du7ybpyu3q5cv" path="res://Image/title.png" id="1_quvj1"]
 [ext_resource type="Texture2D" uid="uid://dryhc4jxk8fbb" path="res://Image/1.zip-1-NaNoRenO 2022-bell_tower.png" id="1_rg4ux"]
-[ext_resource type="Script" uid="uid://cpmotlpav80fa" path="res://title.gd" id="1_yytgh"]
+[ext_resource type="Script" uid="uid://cpmotlpav80fa" path="res://Script/title.gd" id="1_yytgh"]
 [ext_resource type="Texture2D" uid="uid://jp5hmia6rbjr" path="res://Image/buttonLong_beige.png" id="2_ax32a"]
 [ext_resource type="AudioStream" uid="uid://vm0wb20fxgwm" path="res://Sound/Are-you-kidding_loop.ogg" id="4_e4n62"]
 

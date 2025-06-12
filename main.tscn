@@ -1,8 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://c3imbqng7ltbj"]
+[gd_scene load_steps=18 format=3 uid="uid://c3imbqng7ltbj"]
 
 [ext_resource type="Script" uid="uid://cptul7o71dxfv" path="res://Script/background.gd" id="1_7mycd"]
 [ext_resource type="Texture2D" uid="uid://bl62f2gelm5t2" path="res://Image/Bakcground/Spring.png" id="1_ig7tw"]
-[ext_resource type="Script" uid="uid://bx38dqyegbimi" path="res://main.gd" id="1_w48qg"]
+[ext_resource type="Script" uid="uid://bx38dqyegbimi" path="res://Script/main.gd" id="1_w48qg"]
 [ext_resource type="Texture2D" uid="uid://6hx84j52glmv" path="res://Image/Player/chidorMA.png" id="2_0xm2m"]
 [ext_resource type="Script" uid="uid://dtqbbsqne585n" path="res://Script/player.gd" id="2_h2yge"]
 [ext_resource type="Texture2D" uid="uid://csxflm7uo0rao" path="res://Image/Bakcground/Summer.png" id="3_efxa6"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://4wj3me2iun" path="res://Script/spawner.gd" id="5_lquwl"]
 [ext_resource type="Texture2D" uid="uid://b8uk221pmdgkq" path="res://Image/Bakcground/Winter.png" id="5_ycdy4"]
 [ext_resource type="Texture2D" uid="uid://7hqtvt3qnrgg" path="res://Image/Button/blue_button04.png" id="7_272bh"]
+[ext_resource type="Texture2D" uid="uid://bm2hhgbfegjx1" path="res://Image/Heart.png" id="8_vivmo"]
 [ext_resource type="AudioStream" uid="uid://gnly5nwjiexp" path="res://Sound/クイズ不正解1.mp3" id="10_dg77c"]
 [ext_resource type="AudioStream" uid="uid://38x7qk87sa6g" path="res://Sound/Battle-TheOath_loop.ogg" id="13_ycdy4"]
 
@@ -35,11 +36,12 @@ backgrounds = Array[Texture2D]([ExtResource("1_ig7tw"), ExtResource("3_efxa6"), 
 [node name="Sprite2D" type="Sprite2D" parent="Background"]
 texture = ExtResource("1_ig7tw")
 
-[node name="Player" type="Node2D" parent="."]
+[node name="Player" type="CharacterBody2D" parent="." groups=["Player"]]
 unique_name_in_owner = true
 position = Vector2(640, 360)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("2_h2yge")
+heart_texture = ExtResource("8_vivmo")
 left_hit_active = ExtResource("4_5vw27")
 left_hit_inactive = ExtResource("7_272bh")
 right_hit_active = ExtResource("4_5vw27")
@@ -49,12 +51,17 @@ right_hit_inactive = ExtResource("7_272bh")
 position = Vector2(-1, 0)
 texture = SubResource("AtlasTexture_h2yge")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="Player/Sprite2D"]
-position = Vector2(1, 0)
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Player"]
+position = Vector2(-2, 1)
+scale = Vector2(1.13996, 1.436)
+shape = SubResource("RectangleShape2D_lquwl")
+
+[node name="Area2D" type="Area2D" parent="Player"]
+position = Vector2(-1, 0)
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Sprite2D/CharacterBody2D"]
-position = Vector2(-2, 1)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D"]
+position = Vector2(-1, 1)
 scale = Vector2(1.13996, 1.436)
 shape = SubResource("RectangleShape2D_lquwl")
 
@@ -111,6 +118,19 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="HeartContainer" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = 193.0
+offset_right = 20.0
+offset_bottom = 233.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("13_ycdy4")

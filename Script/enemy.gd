@@ -112,10 +112,11 @@ func die(dir: Vector2):
 		show_kill_combo(player.kill_count)
 
 func _on_area_2d_body_entered(body:Node2D) -> void:
-	if body is CharacterBody2D and not is_boosted:
+	if body.is_in_group("Player") and not is_boosted:
 		move_direction = -1
 		sprite.flip_h = not sprite.flip_h
 		is_boosted = true
+		body.on_hit_by_enemy()
 
 		if run_sound:
 			run_sound.play()

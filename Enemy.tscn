@@ -12,6 +12,9 @@
 [ext_resource type="AudioStream" uid="uid://beui0h5kyadjs" path="res://Sound/Hit/重いパンチ2.mp3" id="10_jccr3"]
 [ext_resource type="AudioStream" uid="uid://dlpcy8w6h67pe" path="res://Sound/ピューンと逃げる.mp3" id="11_j4qr3"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s7bn3"]
+size = Vector2(48, 38)
+
 [sub_resource type="Animation" id="Animation_s7bn3"]
 resource_name = "Enemy1_Run"
 length = 0.433337
@@ -74,9 +77,6 @@ _data = {
 &"RESET": SubResource("Animation_tt7e2")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_s7bn3"]
-size = Vector2(48, 38)
-
 [sub_resource type="Gradient" id="Gradient_s7bn3"]
 colors = PackedColorArray(1, 1, 1, 0.156863, 0.8, 0.623529, 0.862745, 1)
 
@@ -113,8 +113,12 @@ color_ramp = SubResource("GradientTexture1D_2hac7")
 hue_variation_min = -2.23517e-08
 hue_variation_max = -2.23517e-08
 
-[node name="Enemy" type="Node2D" groups=["Enemy"]]
+[node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
 script = ExtResource("1_s7bn3")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_s7bn3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_tt7e2")

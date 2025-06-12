@@ -1,12 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://brr030stmxwfm"]
+[gd_scene load_steps=6 format=3 uid="uid://brr030stmxwfm"]
 
 [ext_resource type="FontFile" uid="uid://cyt4b1utv2mbn" path="res://Jalnan2.otf" id="1_55jci"]
 [ext_resource type="Texture2D" uid="uid://cmw02chvgri6q" path="res://Image/095.png" id="1_ejids"]
-[ext_resource type="Script" uid="uid://btgu5x5cokd6l" path="res://result.gd" id="1_mk788"]
+[ext_resource type="Script" uid="uid://btgu5x5cokd6l" path="res://Script/result.gd" id="1_mk788"]
 [ext_resource type="Texture2D" uid="uid://jp5hmia6rbjr" path="res://Image/buttonLong_beige.png" id="2_mk788"]
+[ext_resource type="AudioStream" uid="uid://dewsp4h5f4s3r" path="res://Sound/guutara_loop.ogg" id="5_myq7g"]
 
-[node name="Result" type="Node"]
+[node name="Result" type="Node" node_paths=PackedStringArray("KO", "Miss", "Score")]
 script = ExtResource("1_mk788")
+KO = NodePath("CanvasLayer/VBoxContainer/KO")
+Miss = NodePath("CanvasLayer/VBoxContainer/Miss")
+Score = NodePath("CanvasLayer/VBoxContainer/Score")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -16,6 +20,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0.194349, 0.194349, 0.194349, 1)
 
 [node name="StartButton" type="Button" parent="CanvasLayer"]
 anchors_preset = 7
@@ -63,8 +68,8 @@ theme_override_constants/separation = 20
 layout_mode = 2
 theme_override_constants/outline_size = 20
 theme_override_fonts/font = ExtResource("1_55jci")
-theme_override_font_sizes/font_size = 60
-text = "결 과"
+theme_override_font_sizes/font_size = 100
+text = "Result"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -96,9 +101,13 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/outline_size = 20
 theme_override_fonts/font = ExtResource("1_55jci")
-theme_override_font_sizes/font_size = 60
-text = "점수 : 0"
+theme_override_font_sizes/font_size = 80
+text = "Score : 0"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_myq7g")
+autoplay = true
 
 [connection signal="pressed" from="CanvasLayer/StartButton" to="." method="_on_start_button_pressed"]

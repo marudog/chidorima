@@ -10,6 +10,8 @@ const START_ROW = 1 # 0부터 시작, 2번째 줄
 @onready var left_hit = get_tree().get_root().find_child("LeftHit", true, false)
 @onready var right_hit = get_tree().get_root().find_child("RightHit", true, false)
 @onready var miss_sound = get_node("MissSound")
+@onready var heart_container = get_tree().get_root().find_child("HeartContainer", true, false)
+@export var heart_texture: Texture2D
 @export var left_hit_active: Texture2D
 @export var left_hit_inactive: Texture2D
 @export var right_hit_active: Texture2D
@@ -26,6 +28,8 @@ var prev_row := -1
 var kill_count := 0
 var miss := 0
 
+var hp := 3
+
 func _ready() -> void:
 	var atlas_texture = sprite.texture
 
@@ -33,6 +37,8 @@ func _ready() -> void:
 		# AtlasTexture로 캐스팅
 		atlas_texture = atlas_texture as AtlasTexture
 		# 예: atlas_texture.region_rect에 접근
+
+	update_hearts()
 
 func _process(delta):
 	attack_range_check()
@@ -161,3 +167,30 @@ func attack_range_check():
 func add_kill():
 	kill_count += 1
 
+func on_hit_by_enemy():
+	hp -= 1
+	update_hearts()
+
+	if hp <= 0:
+		goto_result()
+
+func goto_result():
+	var result_scene = preload("res://Result.tscn")
+	var result = result_scene.instantiate()
+	result.kill_count = kill_count
+	result.miss = miss
+	get_tree().root.add_child(result)
+	get_tree().current_scene.queue_free()
+	get_tree().current_scene = result
+
+func update_hearts():
+	if not heart_container:
+		return
+	# 기존 하트 제거
+	for child in heart_container.get_children():
+		child.queue_free()
+	# 현재 hp만큼 하트 추가
+	for i in range(hp):
+		var heart = TextureRect.new()
+		heart.texture = heart_texture
+		heart_container.add_child(heart)

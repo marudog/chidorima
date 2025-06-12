@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dmwicglwjbc7y"]
 
 [ext_resource type="FontFile" uid="uid://cyt4b1utv2mbn" path="res://Jalnan2.otf" id="1_dod02"]
-[ext_resource type="Script" uid="uid://de6inioxtehcq" path="res://combolabel.gd" id="2_h3od2"]
+[ext_resource type="Script" uid="uid://de6inioxtehcq" path="res://Script/combolabel.gd" id="2_h3od2"]
 
 [node name="Label" type="Label"]
 offset_left = -1.0
