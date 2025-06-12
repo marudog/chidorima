@@ -69,7 +69,10 @@ func _input(event):
 			attack_check()
 
  # 모바일 터치 대응
-	if (event is InputEventScreenTouch or event is InputEventScreenDrag) and event.pressed and not is_attacking:
+	if (
+		(event is InputEventScreenTouch or event is InputEventScreenDrag or event is InputEventMouseButton)
+		and event.pressed and not is_attacking
+	):
 		is_attacking = true
 		var new_frame = current_frame
 		var new_row = 1
@@ -83,7 +86,8 @@ func _input(event):
 		prev_row = new_row
 
 		var screen_center = get_viewport().size.x / 2
-		if event.position.x > screen_center:
+		var pos = event.position if event.has_method("position") else event.global_position
+		if pos.x > screen_center:
 			# 오른쪽 터치
 			sprite.flip_h = false
 			update_sprite_region(new_row)
